@@ -1,0 +1,16 @@
+SELECT 
+                que_vitals.qregsRID
+                , que_vitals.CVitRID
+                , que_vitals.VitalsRID
+                , que_vitals.Value
+                , lkup_vitals.Description
+                , lkup_vitals.fontawesome
+                FROM lkup_vitals
+
+                LEFT JOIN que_vitals ON lkup_vitals.VitalsRID = que_vitals.VitalsRID 
+
+                WHERE lkup_vitals.Deleted = 0
+                    AND que_vitals.qregsRID = '0'
+                     
+                ORDER BY lkup_vitals.Description
+            ;

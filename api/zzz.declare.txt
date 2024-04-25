@@ -1,5 +1,5 @@
 SELECT *
         FROM que_declaration
-        WHERE qregsRID = '7' 
+        WHERE qregsRID = 'null' 
         LIMIT 1
         

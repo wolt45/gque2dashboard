@@ -58,6 +58,7 @@
 <script src="modules/angular-qrcode.js"></script>
 <script src="modules/file-saver.js"></script>
 <script src="modules/aes.js"></script>
+<script src="modules/bt-print.min.js"></script>
 
 <!-- application script files -->
 <script src="src/app.js"></script>
@@ -89,4 +90,5 @@
 
 <script src="src/controllers/ctrl_pxDetails.js"></script>
 <script src="src/controllers/dashboard.ctrl.js"></script>
+
 </html>

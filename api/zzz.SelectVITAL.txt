@@ -1,0 +1,7 @@
+SELECT lkup_vitals.VitalsRID
+                , lkup_vitals.Description
+                , lkup_vitals.fontawesome
+                FROM lkup_vitals
+                WHERE lkup_vitals.Deleted = 0
+                ORDER BY lkup_vitals.Description
+            ;
