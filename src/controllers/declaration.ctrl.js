@@ -28,11 +28,7 @@ app.controller(
 
 
     $scope.get_declaration = function (LS_qregsRID) {
-
-
       console.log(LS_qregsRID);
-
-      
       $rest.get(`apiget_declaration&qregsRID=${LS_qregsRID}`)
       .then(
         function success(res) {
@@ -105,7 +101,7 @@ app.controller(
     $scope.saveDeclaration = function(decobj){
       
 
-      decobj.qregsRID = $scope.LS_qregsRID;
+      // decobj.qregsRID = $scope.LS_qregsRID;
 
       console.log(decobj);
 

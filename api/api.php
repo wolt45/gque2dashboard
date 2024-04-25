@@ -1164,10 +1164,10 @@ fclose($wfp);
             $this->response('',406);
         }
 
-        $declaration_item = json_decode(file_get_contents("php://input"),true);
-        $declaration_item = str_replace("'", "`", $declaration_item);
+        $decobj = json_decode(file_get_contents("php://input"),true);
+        $decobj = str_replace("'", "`", $decobj);
 
-        $qregsRID  = (int)$declaration_item['qregsRID'];
+        $qregsRID  = (int)$decobj['qregsRID'];
         
 
         $qregsRID = $qregsRID * 1;

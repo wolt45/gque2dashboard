@@ -60,14 +60,16 @@
             </tr>             
         </thead>
 
-        <tbody ng-repeat="declaration_item in declaration_obj">
+
+        <!-- declaration_item -->
+        <tbody ng-repeat="decobj in declaration_obj">
             
             <tr class="table-secondary">
                 <td class="text-center bg-danger">                                                
-                    <input class="form-check-input" type="radio" name="ubo" ng-model="decobj.ubo" id="ubo1" ng-checked="declaration_item.ubo == 1">
+                    <input class="form-check-input" type="radio" name="ubo" ng-model="decobj.ubo" id="ubo1" ng-checked="decobj.ubo == 1">
                 </td>
                 <td class="text-center bg-info">
-                    <input class="form-check-input" type="radio" name="ubo" ng-model="decobj.ubo" id="ubo2" ng-checked="declaration_item.ubo == 0">
+                    <input class="form-check-input" type="radio" name="ubo" ng-model="decobj.ubo" id="ubo2" ng-checked="decobj.ubo == 0">
                 </td>
                 <td class="text-start" nowrap>
                     <h4>Ubo</h4>
@@ -78,10 +80,10 @@
 
             <tr class="table-secondary">
                 <td class="text-center bg-danger">                                                
-                    <input class="form-check-input" type="radio" name="sipon" ng-model="decobj.sipon" id="sipon1" ng-checked="declaration_item.sipon == 1">
+                    <input class="form-check-input" type="radio" name="sipon" ng-model="decobj.sipon" id="sipon1" ng-checked="decobj.sipon == 1">
                 </td>
                 <td class="text-center bg-info">
-                    <input class="form-check-input" type="radio" name="sipon" ng-model="decobj.sipon" id="sipon2" ng-checked="declaration_item.sipon == 0">
+                    <input class="form-check-input" type="radio" name="sipon" ng-model="decobj.sipon" id="sipon2" ng-checked="decobj.sipon == 0">
                 </td>
                 <td class="text-start" nowrap>
                     <h4>Sip-on</h4>
@@ -91,10 +93,10 @@
 
             <tr class="table-secondary">
                 <td class="text-center bg-danger">                                                
-                    <input class="form-check-input" type="radio" name="hilanat" ng-model="decobj.hilanat" id="hilanat1" ng-checked="declaration_item.hilanat == 1">
+                    <input class="form-check-input" type="radio" name="hilanat" ng-model="decobj.hilanat" id="hilanat1" ng-checked="decobj.hilanat == 1">
                 </td>
                 <td class="text-center bg-info">
-                    <input class="form-check-input" type="radio" name="hilanat" ng-model="decobj.hilanat" id="hilanat2" ng-checked="declaration_item.hilanat == 0">
+                    <input class="form-check-input" type="radio" name="hilanat" ng-model="decobj.hilanat" id="hilanat2" ng-checked="decobj.hilanat == 0">
                 </td>
                 <td class="text-start">
                     <h4>Hilanat</h4>
@@ -104,10 +106,10 @@
 
             <tr class="table-secondary">
                 <td class="text-center bg-danger">                                                
-                    <input class="form-check-input" type="radio" name="lupot" ng-model="declaration_item.lupot" ng-checked="declaration_item.lupot == 1">
+                    <input class="form-check-input" type="radio" name="lupot" ng-model="decobj.lupot" ng-checked="decobj.lupot == 1">
                 </td>
                 <td class="text-center bg-info">
-                    <input class="form-check-input" type="radio" name="lupot" ng-model="declaration_item.lupot" ng-checked="declaration_item.lupot == 0">
+                    <input class="form-check-input" type="radio" name="lupot" ng-model="decobj.lupot" ng-checked="decobj.lupot == 0">
                 </td>
                 <td class="text-start" nowrap>
                     <h4>Naga Lupot</h4>
@@ -117,10 +119,10 @@
 
             <tr class="table-secondary">
                 <td class="text-center bg-danger">                                                
-                    <input class="form-check-input" type="radio" name="sorethroat" ng-model="declaration_item.sorethroat" ng-checked="declaration_item.sorethroat == 1">
+                    <input class="form-check-input" type="radio" name="sorethroat" ng-model="decobj.sorethroat" ng-checked="decobj.sorethroat == 1">
                 </td>
                 <td class="text-center bg-info">
-                    <input class="form-check-input" type="radio" name="sorethroat" ng-model="declaration_item.sorethroat" ng-checked="declaration_item.sorethroat == 0">
+                    <input class="form-check-input" type="radio" name="sorethroat" ng-model="decobj.sorethroat" ng-checked="decobj.sorethroat == 0">
                 </td>
                 <td class="text-start" nowrap>
                     <h4>Naga Sakit ang tutunlan</h4>
@@ -301,7 +303,7 @@
 
 <div style="overflow-x:auto;">
     <div class="d-flex align-items-center justify-content-center" style="gap:5px">
-        <button class="btn btn-theme-green btn-block" ng-click="saveDeclaration(declaration_item)">
+        <button class="btn btn-theme-green btn-block" ng-click="saveDeclaration(decobj)">
             <i class="far fa-save"></i>
             save
         </button>
