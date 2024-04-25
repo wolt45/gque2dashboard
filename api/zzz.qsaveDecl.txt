@@ -1,0 +1,7 @@
+INSERT INTO que_regs SET 
+            LastName = '' 
+            , FirstName = '' 
+            , MiddleName = '' 
+            , purpose = '' 
+            , DateEntered = NOW()
+            ;
