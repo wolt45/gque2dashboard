@@ -99,7 +99,7 @@ app.controller("profile", function ($scope, $state, $filter, $rest, $uibModal, S
     }
   };
 
-  $scope.quePrintZ = function (queobj) {
+  $scope.quePrintZZZ = function (queobj) {
     // console.log(queobj);
 
     if (confirm("Print?")) {
