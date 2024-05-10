@@ -25,10 +25,11 @@ app.controller(
     $scope.LS_qregsRID =  localStorage.getItem("LS_qregsRID");
 
     $scope.declaration_obj = [];
+    $scope.frmObj = [];
 
 
     $scope.get_declaration = function (LS_qregsRID) {
-      console.log(LS_qregsRID);
+      // console.log(LS_qregsRID);
       $rest.get(`apiget_declaration&qregsRID=${LS_qregsRID}`)
       .then(
         function success(res) {
@@ -98,19 +99,19 @@ app.controller(
     };
 
 
-    $scope.saveDeclaration = function(decobj){
+    $scope.saveDeclaration = function(frmObj){
       
 
-      // decobj.qregsRID = $scope.LS_qregsRID;
+      // frmObj.qregsRID = $scope.LS_qregsRID;
 
-      console.log(decobj);
+      console.log(frmObj);
 
 
       if (confirm("Are your entries final?")) {
 
 
         $rest
-          .post('APIsaveDeclaration', decobj)
+          .post('APIsaveDeclaration', frmObj)
           .then(function success(response) {
 
           // $window.location.href = 'pages/queShow.php&newRID';
@@ -122,6 +123,28 @@ app.controller(
         });
       }
     }
+
+
+
+
+
+
+    $scope.queNEWDeclare = function(){
+
+      var qregsRID =  localStorage.getItem("LS_qregsRID");
+
+      console.log(qregsRID);
+
+      if (confirm("Proceed? " + qregsRID)) {
+        $rest
+          .post('APIqueNEWDeclare', {"qregsRID":qregsRID})
+          .then(function success(response) {
+
+           $state.reload();
+        });
+      }
+    }
+
 
 
 

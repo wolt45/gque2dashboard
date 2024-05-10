@@ -131,5 +131,41 @@ app.controller(
         $state.go("login");
       }
     };
+
+
+    $scope.SetQueDoneZZZ = function (que) {
+
+      if (confirm("Set to DONE?")) {
+
+        alert("Hit! " + que);
+
+        // const audio = new Audio('Apocalypto.avi');
+        // audio.play();
+      }
+
+    };
+
+
+
+
+ 
+    $scope.queAction = function (rid, stts) {
+      if (confirm("Proceed #" + rid + "? ")) {
+        $scope.$emit('LOAD');
+
+        $rest
+        .get(`apiqueAction&rid=${rid}&stts=${stts}`)
+
+        .then(function success(response) {
+          // $scope.$emit('UNLOAD');
+          location.reload();
+        });
+      }
+    };
+
+
+
+
+    // floor
   }
 );

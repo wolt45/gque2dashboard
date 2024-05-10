@@ -109,7 +109,7 @@ app.controller(
 
 
 
-    $scope.pxprofile_list = function (sid, startDate, endDate) {
+    $scope.pxprofile_list____ZZZ = function (sid, startDate, endDate) {
       $rest
         .get(`pxprofile_list&sid=${sid}&startDate=${startDate}&endDate=${endDate}`)
         .then(

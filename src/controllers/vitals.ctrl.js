@@ -137,8 +137,6 @@ app.controller(
     };
     
 
-
-
     $scope.SaveVitalEncoded = function (EncodeVital, LS_qregsRID) {
       // console.log(EncodeVital.VitalsRID);
       // console.log(EncodeVital.VitalsValue);
@@ -159,12 +157,7 @@ app.controller(
     };
     
 
-
-
-
     $scope.SaveVitalEncodedZZZ = function(EncodeVital){
-      
-
       if (confirm("Are your entries final?")) {
         // let qObj={
         //   lname: txtLastName,

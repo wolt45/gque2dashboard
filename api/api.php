@@ -485,8 +485,18 @@ class API extends REST
                 , lkup_que_status.StatusDesc
                 FROM que_regs
                 INNER JOIN lkup_que_status ON que_regs.questatus = lkup_que_status.questatus
+
+                WHERE que_regs.questatus < 99
+
                 ORDER BY que_regs.questatus, que_regs.qregsRID ASC
             ;";
+
+
+$wfp = fopen("zzz.Q999.txt", "w");
+fwrite($wfp, $query);
+fclose($wfp);
+
+
         $stmt = $this->ipadrbg->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -681,9 +691,17 @@ fclose($wfp);
                 FROM que_regs
 
                 INNER JOIN lkup_que_status ON que_regs.questatus = lkup_que_status.questatus
+
+                WHERE que_regs.questatus < 99
+
                 ORDER BY que_regs.questatus, que_regs.qregsRID ASC
                 LIMIT 3
             ;";
+
+$wfp = fopen("zzz.QueZ99.txt", "w");
+fwrite($wfp, $query);
+fclose($wfp);
+
 
         $stmt = $this->ipadrbg->prepare($query);
         $stmt->execute();
@@ -712,7 +730,6 @@ fclose($wfp);
             $this->response($this->json($callback), 406);
         }
 
-
         $startDate = (string)$this->_request["startDate"];
         $endDate = (string)$this->_request["endDate"];
 
@@ -724,6 +741,9 @@ fclose($wfp);
 
         $query = "SELECT DISTINCT que_regs.purpose
                 FROM que_regs
+
+                WHERE que_regs.questatus < 99
+
                 ORDER BY que_regs.purpose ASC
             ;";
         $stmt = $this->ipadrbg->prepare($query);
@@ -768,6 +788,7 @@ fclose($wfp);
 
         $query1 = "SELECT DISTINCT que_regs.purpose
                 FROM que_regs
+                WHERE que_regs.questatus < 99
                 ORDER BY que_regs.purpose ASC
             ;";
         $stmt1 = $this->ipadrbg->prepare($query1);
@@ -1159,49 +1180,148 @@ fclose($wfp);
 
 
 
+
+
+    private function APIqueNEWDeclare(){
+        if($this->get_request_method() != "POST"){
+            $this->response('',406);
+        }
+
+        $qObj = json_decode(file_get_contents("php://input"),true);
+        $qObj = str_replace("'", "`", $qObj);
+        $qregsRID  = (string)$qObj['qregsRID'];
+        $qregsRID = $qregsRID * 1;
+
+        /////////////////////////////////////////////////////////////////////////
+
+       $query2 = "SELECT 
+            qregsRID
+            FROM que_declaration 
+            WHERE qregsRID = '$qregsRID'
+            ;";
+
+$wfp = fopen("zzz.qCreateMMMDecl.txt", "w");
+fwrite($wfp, $query2);
+fclose($wfp);
+
+        $stmt2 = $this->ipadrbg->prepare($query2);
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+
+        $create = 0;
+
+        if ($row2 = $result2->fetch_assoc()) {
+            $create = 1;
+
+            $queryf = "UPDATE que_declaration SET 
+                qregsRID = '$qregsRID' 
+                WHERE qregsRID = '$qregsRID'
+                ";
+        }
+        else
+        {
+            $queryf = "INSERT INTO que_declaration SET 
+            qregsRID = '$qregsRID'
+            ;";
+        }
+
+$wfp = fopen("zzz.qCreateQQQDecl.txt", "w");
+fwrite($wfp, $queryf);
+fclose($wfp);
+
+        /////////////////////////////////////////////////////////////////////////
+         
+        $stmt = $this->ipadrbg->prepare($queryf);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $rows[] = $row;
+            }
+            $this->response($this->json($rows), 200);
+        } else {
+            $this->response('', 204);
+        }
+        $stmt->close();
+        $this->ipadrbg->close();
+    }
+
+
     private function APIsaveDeclaration(){
         if($this->get_request_method() != "POST"){
             $this->response('',406);
         }
 
-        $decobj = json_decode(file_get_contents("php://input"),true);
-        $decobj = str_replace("'", "`", $decobj);
+        $frmObj = json_decode(file_get_contents("php://input"),true);
+        $frmObj = str_replace("'", "`", $frmObj);
 
-        $qregsRID  = (int)$decobj['qregsRID'];
+        $qregsRID  = (int)$frmObj['qregsRID'];
+        $ubo  = (int)$frmObj['ubo'];
+        $sipon  = (int)$frmObj['sipon'];
+        $hilanat  = (int)$frmObj['hilanat'];
+        $lupot  = (int)$frmObj['lupot'];
+        $sorethroat  = (int)$frmObj['sorethroat'];
+        $headache  = (int)$frmObj['headache'];
+        $bodyache  = (int)$frmObj['bodyache'];
+        $shortbreath  = (int)$frmObj['shortbreath'];
+        $notaste  = (int)$frmObj['notaste'];
+        $nosmell  = (int)$frmObj['nosmell'];
+
+        $nakabyahe  = (string)$frmObj['nakabyahe'];
+        $nakabyahe_placeexit  = (string)$frmObj['nakabyahe_placeexit'];
+        $nakabyahe_datedeparture  = (string)$frmObj['nakabyahe_datedeparture'];
+        $nakabyahe_datearrival  = (string)$frmObj['nakabyahe_datearrival'];
+
+        $nakatiner  = (string)$frmObj['nakatiner'];
+        $nakatiner_placeexit  = (string)$frmObj['nakatiner_placeexit'];
+        $nakatiner_datedeparture  = (string)$frmObj['nakatiner_datedeparture'];
+        $nakatiner_datearrival  = (string)$frmObj['nakatiner_datearrival'];
+
+        $nakaatubang  = (int)$frmObj['nakaatubang'];
+        $may_pending_rt_pcr  = (int)$frmObj['may_pending_rt_pcr'];
         
-
         $qregsRID = $qregsRID * 1;
          
         if ($qregsRID > 0)
         {
-            $query = "UPDATE que_regs SET 
-            LastName = '$LastName' 
-            , FirstName = '$FirstName' 
-            , MiddleName = '$MiddleName' 
-            , purpose = '$purpose' 
-            -- , DateEntered = NOW()
+            $query = "UPDATE que_declaration SET 
+                ubo = '$ubo' 
+                , sipon = '$sipon' 
+                , hilanat = '$hilanat' 
+                , lupot = '$lupot' 
+                , sorethroat = '$sorethroat' 
+
+                , headache = '$headache' 
+                , bodyache = '$bodyache' 
+                , shortbreath = '$shortbreath' 
+                , notaste = '$notaste' 
+                , nosmell = '$nosmell' 
+
+                , nakabyahe = '$nakabyahe' 
+                , nakabyahe_placeexit = '$nakabyahe_placeexit' 
+                , nakabyahe_datedeparture = '$nakabyahe_datedeparture' 
+                , nakabyahe_datearrival = '$nakabyahe_datearrival' 
+
+                , nakatiner = '$nakatiner' 
+                , nakatiner_placeexit = '$nakatiner_placeexit' 
+                , nakatiner_datedeparture = '$nakatiner_datedeparture' 
+                , nakatiner_datearrival = '$nakatiner_datearrival' 
+
+                , nakaatubang = '$nakaatubang' 
+                , may_pending_rt_pcr = '$may_pending_rt_pcr' 
+                
             WHERE qregsRID = '$qregsRID'
             ;";
         }
         else
         {
-            $query = "INSERT INTO que_regs SET 
-            LastName = '$LastName' 
-            , FirstName = '$FirstName' 
-            , MiddleName = '$MiddleName' 
-            , purpose = '$purpose' 
-            , DateEntered = NOW()
+            $query = "INSERT INTO que_declaration SET 
+                DateEntered = NOW()
+                qregsRID = '$qregsRID'
             ;";
         }
-
-$wfp = fopen("zzz.qsaveDecl.txt", "w");
-fwrite($wfp, $query);
-fclose($wfp);
-
-        $stmt = $this->ipadrbg->prepare(
-            $query
-        );
-
+        $stmt = $this->ipadrbg->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -1366,11 +1486,6 @@ fclose($wfp);
         $stmtf->execute();
         //////////////////////////////////////////////////////////////////////////////////////////
 
-
-         
-
-
-
         $query = "SELECT * 
             FROM que_vitals
             WHERE qregsRID= '$qregsRID'
@@ -1462,6 +1577,8 @@ fclose($wfp);
         $stmt->close();
         $this->ipadrbg->close();
     }
+
+
 
 
     private function get_status()

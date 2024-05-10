@@ -14,9 +14,16 @@
     }
 </style>
 
-<meta http-equiv="refresh" content="10">
+<meta http-equiv="refresh" content="5">
 
 <div class="row align-items-center mb-3 px-3">
+
+    <div class="col-md-2 text-start">
+        <button type="button" class="btn btn-success btn-block" ng-click="queAction(quePurposeMembersOBJItem.m1, 9)">
+            HOME
+        </button>
+    </div>
+
     <div class="col-lg-12 text-center">
         <h4 class="fw-bold text-uppercase mb-0">DR. RAMON B. GUSTILO HOSPITAL</h4>
         <!-- <small></small> -->
@@ -31,13 +38,11 @@
 </div>
 
 
-
-
     <!-- page content -->
     <div class="row my-3 px-3">
-        <div class="col-md-2 col-sm-4 col-xs-6 col-lg-3 text-center bg-info" style="border: 1px solid white;" ng-repeat="quePurposeMembersOBJItem in quePurposeMembersOBJ">
+        <div class="col-md-2 col-sm-4 col-xs-6 col-lg-3 text-center bg-success" style="border: 1px solid white;" ng-repeat="quePurposeMembersOBJItem in quePurposeMembersOBJ">
             <!-- <i class="fas fa-user-md me-3"></i> -->
-            <span class="text-danger" style="font-size:26px; font-weight: bold;"> {{quePurposeMembersOBJItem.purpose}} </span>
+            <span class="text-light" style="font-size:26px; font-weight: bold;"> {{quePurposeMembersOBJItem.purpose}} </span>
 
 
 
@@ -47,10 +52,19 @@
 
 
             <div class="text-center bg-light">
-                <span style="font-size:60px; font-weight: bold;"> {{quePurposeMembersOBJItem.m1}} </span>
+                <button type="button" class="btn btn-block" style="font-size:60px; font-weight: bold;" ng-click="queAction(quePurposeMembersOBJItem.m1, 9)">
+                    <!-- <span style="font-size:60px; font-weight: bold;"> {{quePurposeMembersOBJItem.m1}} </span> -->
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    {{quePurposeMembersOBJItem.m1}}
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                </button>
             </div>
 
-            <div class="text-center bg-success">
+            <div class="text-center bg-primary">
                 <span class="text-warning" style="font-size:40px; font-weight: bold;" ng-show="quePurposeMembersOBJItem.m2 > 0"> 
                     {{quePurposeMembersOBJItem.m2}} 
                     <br>
@@ -58,8 +72,5 @@
                 </span>
             </div>
         </div>
-
-
-
     </div>
     <!-- /page content -->
