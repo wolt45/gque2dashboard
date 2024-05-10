@@ -100,16 +100,9 @@ app.controller(
 
 
     $scope.saveDeclaration = function(frmObj){
-      
-
       // frmObj.qregsRID = $scope.LS_qregsRID;
-
       console.log(frmObj);
-
-
       if (confirm("Are your entries final?")) {
-
-
         $rest
           .post('APIsaveDeclaration', frmObj)
           .then(function success(response) {
@@ -125,16 +118,8 @@ app.controller(
     }
 
 
-
-
-
-
     $scope.queNEWDeclare = function(){
-
       var qregsRID =  localStorage.getItem("LS_qregsRID");
-
-      console.log(qregsRID);
-
       if (confirm("Proceed? " + qregsRID)) {
         $rest
           .post('APIqueNEWDeclare', {"qregsRID":qregsRID})
@@ -146,7 +131,6 @@ app.controller(
     }
 
 
-
-
+    // floor
   }
 );

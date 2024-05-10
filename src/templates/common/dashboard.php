@@ -19,7 +19,7 @@
 <div class="row align-items-center mb-3 px-3">
 
     <div class="col-md-2 text-start">
-        <button type="button" class="btn btn-success btn-block" ng-click="queAction(quePurposeMembersOBJItem.m1, 9)">
+        <button type="button" class="btn btn-success btn-block" ng-click="goHome()">
             HOME
         </button>
     </div>

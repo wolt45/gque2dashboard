@@ -41,9 +41,6 @@
 <div class="container mt-3">
     <h2>DECLARATION</h2>
 
-
-
-
     <table class="table table-condensed">
         <tr class="table-primary">
             <td colspan="3" class="text-center" nowrap>
@@ -60,7 +57,6 @@
             <th width="1%"></th>
             <th></th>
         </tr>             
-
 
         <!-- defrmOBJ -->
         <tbody ng-repeat="defrmOBJ in declaration_obj">
@@ -193,6 +189,7 @@
                 <td class="text-start" nowrap>
                     <h4>Indi maka panimaho</h4>
                 </td>
+
                 <td></td>
             </tr>
 
@@ -212,6 +209,8 @@
                 <td class="text-start" nowrap>
                     <h4>Nakabiyahe o nakahalin sa iban nga pungsod sa nagligad nga katorse ka adlaw. </h4>
                 </td>
+
+                <td></td>
             </tr>
 
             <tr class="table-secondary">
@@ -228,9 +227,10 @@
                     <br>Date of Arrival to the city: <input type="text" ng-model="defrmOBJ.nakabyahe_datearrival">
                 </td>
 
+                <td></td>
             </tr>
 
-            <tr>
+            <tr class="table-secondary">
                 <td class="text-center">                                                
                     <input class="form-check-input" type="checkbox" name="nakatiner" ng-model="defrmOBJ.nakatiner" ng-checked="defrmOBJ.nakatiner == 1"> 
                 </td>
@@ -240,6 +240,8 @@
                 <td class="text-start" nowrap>
                     <h4>Nakabiyahe o naka tinir sa mga pungsod o lugar nga may kumpirmado nga kaso sang COVID-19</h4>
                 </td>
+
+                <td></td>
             </tr>
 
             <tr class="table-secondary">
@@ -252,6 +254,8 @@
                     <br>Date of Departure: <input type="text" ng-model="defrmOBJ.nakatiner_datedeparture">
                     <br>Date of Arrival to the city: <input type="text" ng-model="defrmOBJ.nakatiner_datearrival">
                 </td>
+
+                <td></td>
             </tr>
 
             <tr class="table-secondary">
@@ -264,6 +268,8 @@
                 <td class="text-start" nowrap>
                     <h4>Naka atubang sa tawo nga kumpirmado ukon ginsuspetsahan nga may ara COVID-19.</h4>
                 </td>
+
+                <td></td>
             </tr>
 
 
@@ -281,17 +287,17 @@
             </tr>
 
             <tr class="table-secondary">
-                <td colspan="3" class="text-start" nowrap>
+                <td colspan="4" class="text-start" nowrap>
                     <h4>I declare that all statement given are true and correct to the best of my ability, I shall be held liable for any misinformation I have given.</h4>
                 </td>
             </tr>
 
-            <tr> 
-                <td><br><br></td>
+            <tr class="table-secondary">
+                <td colspan="4"><br><br></td>
             </tr>
 
             <tr class="table-secondary">
-                <td colspan="3" class="text-center" nowrap>
+                <td colspan="4" class="text-center" nowrap>
                     _________________________________________
                     <h4>Signature over printed name/Date</h4>
                     <h4>Parent/Guardian</h4>

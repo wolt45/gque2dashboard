@@ -133,22 +133,11 @@ app.controller(
     };
 
 
-    $scope.SetQueDoneZZZ = function (que) {
-
-      if (confirm("Set to DONE?")) {
-
-        alert("Hit! " + que);
-
-        // const audio = new Audio('Apocalypto.avi');
-        // audio.play();
-      }
-
-    };
+    $scope.goHome = function(){
+      window.location.href = '#/queue';
+    }
 
 
-
-
- 
     $scope.queAction = function (rid, stts) {
       if (confirm("Proceed #" + rid + "? ")) {
         $scope.$emit('LOAD');
