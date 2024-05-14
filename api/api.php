@@ -1521,12 +1521,27 @@ fclose($wfp);
 
         $qregsRID = (int)$this->_request["qregsRID"];
 
-        $query="SELECT *
+        $query="SELECT 
+            qregsRID
+            , datetime(DateEntered) AS DateEntered
+            , purpose
+            , LastName
+            , FirstName
+            , MiddleName
+
         FROM que_regs
         WHERE qregsRID = '$qregsRID' 
         ORDER BY qregsRID DESC
         LIMIT 1
         ";
+
+
+$wfp = fopen("zzz.DATEZ.txt", "w");
+fwrite($wfp, $query);
+fclose($wfp);
+
+
+
         $stmt = $this->ipadrbg->prepare(
             $query
         );

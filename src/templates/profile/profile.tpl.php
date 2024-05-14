@@ -40,11 +40,10 @@
                
             <table class="table table-bordered table-striped">
               
-                <tr class="table-info" style="color: black;">
+                <tr class="table-info" style="color: black;" ng-repeat="queOBJItem in queOBJ">
                     <th class="text-left" width="1%" nowrap>
                         <h3 style="color: black; font-weight: bold"> OPD QUEUE: 
-                            &nbsp; {{dateNow | date:' MMMM d, yyyy'}}
-                            &nbsp; {{dateNow | date:'h:mm a'}}
+                            &nbsp; {{queOBJItem.DateEntered | date: 'mediumDate'}}
                         </h3>
                     </th>
 
