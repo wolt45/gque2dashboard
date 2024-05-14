@@ -116,8 +116,6 @@ app.controller(
         });
       }
     }
-
-
     $scope.queNEWDeclare = function(){
       var qregsRID =  localStorage.getItem("LS_qregsRID");
       if (confirm("Proceed? " + qregsRID)) {
