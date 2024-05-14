@@ -42,9 +42,11 @@
               
                 <tr class="table-info" style="color: black;" ng-repeat="queOBJItem in queOBJ">
                     <th class="text-left" width="1%" nowrap>
-                        <h3 style="color: black; font-weight: bold"> OPD QUEUE: 
+                        QUEUE Date:
+                        <span style="color: black; font-size: 24px; font-weight: bold">  
+                            <!-- &nbsp; {{queOBJItem.DateEntered | date: 'mediumDate'}} -->
                             &nbsp; {{queOBJItem.DateEntered | date: 'mediumDate'}}
-                        </h3>
+                        </span>
                     </th>
 
                     <th class="text-center bg-light" rowspan="10">

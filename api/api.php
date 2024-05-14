@@ -1523,18 +1523,16 @@ fclose($wfp);
 
         $query="SELECT 
             qregsRID
-            , datetime(DateEntered) AS DateEntered
+            , date(DateEntered) AS DateEntered
             , purpose
             , LastName
             , FirstName
             , MiddleName
-
         FROM que_regs
         WHERE qregsRID = '$qregsRID' 
         ORDER BY qregsRID DESC
         LIMIT 1
         ";
-
 
 $wfp = fopen("zzz.DATEZ.txt", "w");
 fwrite($wfp, $query);
