@@ -139,7 +139,7 @@ app.controller(
 
 
     $scope.queAction = function (rid, stts) {
-      if (confirm("Done  with Appointment? #" + rid + "? ")) {
+      if (confirm("Done with Appointment? #" + rid + "? ")) {
         $scope.$emit('LOAD');
 
         $rest
