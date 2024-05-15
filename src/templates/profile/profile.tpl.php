@@ -45,8 +45,15 @@
                         QUEUE Date:
                         <span style="color: black; font-size: 24px; font-weight: bold">  
                             <!-- &nbsp; {{queOBJItem.DateEntered | date: 'mediumDate'}} -->
-                            &nbsp; {{queOBJItem.DateEntered | date: 'mediumDate'}}
+                            &nbsp; {{queOBJItem.DateEntered | date:'MMM dd, yyyy'}}
+                            <!-- &nbsp; {{queOBJItem.DateEntered | date:'h:i:sa'}} -->
                         </span>
+
+                        <?php
+                            // echo "<br><br><br>";
+
+                            // echo "{{queOBJItem.DateEntered | date:'hh:mm a'}}";
+                        ?>
                     </th>
 
                     <th class="text-center bg-light" rowspan="10">
