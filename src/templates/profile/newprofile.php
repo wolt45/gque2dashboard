@@ -68,7 +68,17 @@
                         Middle Name: <input ng-model="newQUE.MiddleName" style="font-size:20px" type="text" required>
 
                         <br>
-                        Purpose: <input ng-model="newQUE.purpose" style="font-size:20px" type="text">
+                        <!-- Purpose: <input ng-model="newQUE.purpose" style="font-size:20px" type="text"> -->
+
+                        <label for="purpose">Purpose:</label>
+                        <!-- <input list="purposeList" name="queOBJItem.purpose" ng-model="queOBJItem.purpose" id="purpose" style="font-size:20px" type="text" required> -->
+                        <input list="purposeList" ng-model="newQUE.purpose" id="purpose" style="font-size:20px" required>
+
+                        <datalist id="purposeList">
+                            <option value="For Registration">
+                            <option value="Cashier">
+                            <option value="Check Up ">
+                        </datalist>
 
                         <br><br>
  
@@ -79,7 +89,8 @@
 
                 <tr class="table-info" style="color: black;">
                     <th class="text-center">
-                        TEST TEST
+
+                        
                     </th>
                 </tr>
             </table>

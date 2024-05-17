@@ -74,11 +74,22 @@
                         First Name: <input ng-model="queOBJItem.FirstName" style="font-size:20px" type="text" required>
                         <br>
                         Middle Name: <input ng-model="queOBJItem.MiddleName" style="font-size:20px" type="text" required>
-                        
                         <br>
-                        Purpose: <input ng-model="queOBJItem.purpose" style="font-size:20px" type="text" required>
-                        <br><br>
+                        <!-- Purpose: <input ng-model="queOBJItem.purpose" style="font-size:20px" type="text" required> -->
+
+  
+                        <label for="purpose">Purpose:</label>
+                        <!-- <input list="purposeList" name="queOBJItem.purpose" ng-model="queOBJItem.purpose" id="purpose" style="font-size:20px" type="text" required> -->
+                        <input list="purposeList" ng-model="queOBJItem.purpose" id="purpose" style="font-size:20px" required>
+
+                        <datalist id="purposeList">
+                            <option value="For Registration">
+                            <option value="Cashier">
+                            <option value="Check-Up ">
+                        </datalist>
  
+                        <br><br>
+
                         <button class="btn btn-block btn-success btn-lg" ng-click="queSave(queOBJItem)">SAVE</button>
                         <button class="btn btn-block btn-warning btn-lg" ng-click="queCancel()">CANCEL</button>
 
