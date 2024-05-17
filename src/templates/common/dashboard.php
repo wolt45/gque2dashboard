@@ -22,6 +22,10 @@
         <button type="button" class="btn btn-success btn-block" ng-click="goHome()">
             HOME
         </button>
+
+        <a type="button" class="btn btn-warning btn-block" ng-click="goRefresh()">
+            Refresh
+        </a>
     </div>
 
     <div class="col-lg-12 text-center">

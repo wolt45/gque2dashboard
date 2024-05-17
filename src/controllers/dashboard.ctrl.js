@@ -134,7 +134,12 @@ app.controller(
 
 
     $scope.goHome = function(){
+      // location.reload();
       window.location.href = '#/queue';
+    }
+
+    $scope.goRefresh = function(){
+      location.reload();
     }
 
 

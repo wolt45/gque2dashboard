@@ -13,6 +13,7 @@
         color: white;
     }
 </style>
+
 <div class="row align-items-center mb-3 px-3">
     <div class="col-lg-6">
         <h4 class="fw-bold text-uppercase mb-0">ON-QUEUE LIST</h4>

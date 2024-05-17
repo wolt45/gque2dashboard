@@ -41,6 +41,8 @@ app.controller(
           function success(res) {
             $scope.item_obj = res.data;
             // $scope.progressbar($scope.item_obj.length);
+
+            // $state.reload();
           },
           function error(err) {
             console.error(err);
@@ -50,7 +52,7 @@ app.controller(
     };
     $scope.pxprofile_list($scope.sid, $scope.startDate, $scope.endDate);
 
-    $scope.patch = function (vr) {
+    $scope.patchZZZ = function (vr) {
       $scope.progressbar($scope.item_obj.length);
       if (vr == 0) {
         angular.forEach($scope.item_obj, function (item) {
