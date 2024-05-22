@@ -20,7 +20,7 @@ app.controller("login", function ($scope, $state, $filter, $rest) {
             $scope.msg = "";
 
 
-            $state.go("queue");
+            $state.go("dashboard");
 
             
             var encryptedUser = CryptoJS.AES.encrypt(
@@ -43,7 +43,7 @@ app.controller("login", function ($scope, $state, $filter, $rest) {
   $scope.check_loggedIn = function () {
     let queue_user = localStorage.getItem("queue_user");
     if (queue_user) {
-      $state.go("queue");
+      $state.go("dashboard");
     } else {
       $state.go("login");
     }

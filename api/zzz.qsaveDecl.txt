@@ -1,7 +1,28 @@
-INSERT INTO que_regs SET 
-            LastName = '' 
-            , FirstName = '' 
-            , MiddleName = '' 
-            , purpose = '' 
-            , DateEntered = NOW()
+UPDATE que_declaration SET 
+                ubo = '0' 
+                , sipon = '0' 
+                , hilanat = '0' 
+                , lupot = '0' 
+                , sorethroat = '0' 
+
+                , headache = '0' 
+                , bodyache = '0' 
+                , shortbreath = '0' 
+                , notaste = '0' 
+                , nosmell = '0' 
+
+                , nakabyahe = '0' 
+                , nakabyahe_placeexit = '7 halin exit' 
+                , nakabyahe_datedeparture = '7 halin depart' 
+                , nakabyahe_datearrival = '7 halin arrived' 
+
+                , nakatiner = '0' 
+                , nakatiner_placeexit = '7 tinir edit' 
+                , nakatiner_datedeparture = '7 tinir depart' 
+                , nakatiner_datearrival = '7 tinir arrived' 
+
+                , nakaatubang = '0' 
+                , may_pending_rt_pcr = '0' 
+                
+            WHERE qregsRID = '7'
             ;

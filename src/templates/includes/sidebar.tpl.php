@@ -11,22 +11,6 @@
 
     <ul>
         <li ui-sref-active="active-menu">
-            <a ui-sref="queue"><i class="fa-solid fa-circle-dot me-3 text-warning"></i><span>QUEUE</span></a>
-        </li>
-
-        <li ui-sref-active="active-menu">
-            <a ui-sref="profile"><i class="fa-solid fa-circle-dot me-3 text-warning"></i><span>PROFILE</span></a>
-        </li>
-
-        <li ui-sref-active="active-menu">
-            <a ui-sref="vitals"><i class="fa-solid fa-circle-dot me-3 text-success"></i><span>VITAL SIGNS</span></a>
-        </li>
-        
-        <li ui-sref-active="active-menu">
-            <a ui-sref="declaration"><i class="fa-solid fa-circle-dot me-3 text-primary"></i><span>DECLARATION</span></a>
-        </li>
-
-        <li ui-sref-active="active-menu">
             <a ui-sref="dashboard"><i class="fas fa-radiation-alt me-3 text-danger"></i><span>DASHBOARD</span></a>
         </li>
     </ul>

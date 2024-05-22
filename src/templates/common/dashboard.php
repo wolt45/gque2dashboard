@@ -19,9 +19,9 @@
 <div class="row align-items-center mb-3 px-3">
 
     <div class="col-md-2 text-start">
-        <button type="button" class="btn btn-success btn-block" ng-click="goHome()">
+        <!-- <button type="button" class="btn btn-success btn-block" ng-click="goHome()">
             HOME
-        </button>
+        </button> -->
 
         <a type="button" class="btn btn-warning btn-block" ng-click="goRefresh()">
             Refresh
