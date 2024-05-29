@@ -87,7 +87,7 @@ app.controller(
         .then(
           function success(res) {
             $scope.quePurposeMembersOBJ = res.data;
-            console.log($scope.quePurposeMembersOBJ);
+            // console.log($scope.quePurposeMembersOBJ);
           },
           function error(err) {
             console.error(err);
@@ -158,7 +158,52 @@ app.controller(
     };
 
 
+    $scope.queActionNowServeDone = function (rid, stts, purpose) {
+      if (confirm("Done with Appointment? #" + rid + "? ")) {
+        $scope.$emit('LOAD');
 
+        $rest
+        .get(`apiqueActionNowServeDone&rid=${rid}&stts=${stts}&purpose=${purpose}`)
+
+        .then(function success(response) {
+          // $scope.$emit('UNLOAD');
+          location.reload();
+        });
+      }
+    };
+
+
+    // $scope.putOnHold = function (rid) {
+    //   if (confirm("Put #" + rid + " On-Hold mode?")) {
+    //     $scope.$emit('LOAD');
+
+    //     $rest
+    //     .get(`apiquePutOnHold&rid=${rid}`)
+
+    //     .then(function success(response) {
+    //       // $scope.$emit('UNLOAD');
+    //       location.reload();
+    //     });
+    //   }
+    // };
+
+
+    $scope.putOnHold = function(rid){
+      console.log(rid);
+      if (confirm("Put #" + rid + " On-Hold mode?")) {
+        $rest
+        .post('apiquePutOnHold', {"qregsRID": rid})
+          .then(function success(response) {
+
+          // $window.location.href = 'pages/queShow.php&newRID';
+
+          // $scope.queGetNumber(queobj);
+
+           // alert("QUEUE Data Saved! ");
+           $state.reload();
+        });
+      }
+    }
 
     // floor
   }

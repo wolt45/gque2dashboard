@@ -786,79 +786,168 @@ fclose($wfp);
         $stmt0= $this->ipadrbg->prepare($query0);
         $stmt0->execute();
 
-        $query1 = "SELECT DISTINCT que_regs.purpose
+        $query1 = "SELECT DISTINCT purpose
                 FROM que_regs
-                WHERE que_regs.questatus < 99
-                ORDER BY que_regs.purpose ASC
+                WHERE (questatus >= 0 AND questatus <=2)
+                ORDER BY purpose ASC
             ;";
         $stmt1 = $this->ipadrbg->prepare($query1);
         $stmt1->execute();
         $result1 = $stmt1->get_result();
 
         while ($row1 = $result1->fetch_assoc()) {
-            $rows1[] = $row1;
+            // $rows1[] = $row1;
 
-            $purpose = $row1['purpose'];
+            $purposeONLY = $row1['purpose'];
 
             $queryw = "INSERT INTO que_regsTally SET 
-                purpose = '$purpose'";
+                purpose = '$purposeONLY
+                '";
             $stmtw= $this->ipadrbg->prepare($queryw);
             $stmtw->execute();
 
-            $query2 = "SELECT qregsRID from que_regs 
-                WHERE purpose = '$purpose' 
-                AND questatus <= 1
-                ORDER BY qregsRID, questatus DESC
+            //////////////////////////////////////////
+            //////////////////////////////////////////
+            //////////////////////////////////////////
+            //////////////////////////////////////////
+            // m1..m3 Ques - Loop - Start
+            $queryNxtQ = "SELECT 
+                    qregsRID 
+                FROM que_regs 
+                WHERE purpose LIKE '%$purposeONLY%'
+                AND questatus = 0
+                ORDER BY qregsRID
                 LIMIT 3
                 ;";
-
-            $stmt2 = $this->ipadrbg->prepare($query2);
-            $stmt2->execute();
-            $result2 = $stmt2->get_result();
+            $stmtNxtQ = $this->ipadrbg->prepare($queryNxtQ);
+            $stmtNxtQ->execute();
+            $resultNxtQ = $stmtNxtQ->get_result();
 
             $members = "";
 
             $m = 1;
+            while ($rowNxtQ = $resultNxtQ->fetch_assoc()) {
+                // $rows2[] = $row2;
 
-            while ($row2 = $result2->fetch_assoc()) {
-                $rows2[] = $row2;
+                $qregsRIDnxtq = $rowNxtQ['qregsRID'];
 
-                $qregsRID = $row2['qregsRID'];
-
-                $members = $members . $qregsRID . ", ";
+                $members = $members . $qregsRIDnxtq . ", ";
 
                 $MX = 'm' . $m;
 
-                $queryf = "UPDATE que_regsTally SET 
-                    $MX = '$qregsRID'
-                    WHERE purpose = '$purpose'
+                $queryNxt = "UPDATE que_regsTally 
+                    SET $MX = '$qregsRIDnxtq'
+                    WHERE purpose LIKE '%$purposeONLY%'
                     ";
-                $stmtf= $this->ipadrbg->prepare($queryf);
-                $stmtf->execute();
+                $stmtUpNxt= $this->ipadrbg->prepare($queryNxt);
+                $stmtUpNxt->execute();
 
                 $m += 1;
             }
+
+            // m1..m3 Ques - Loop End
+
+            //////////////////////////////////////////
+            //////////////////////////////////////////
+            //////////////////////////////////////////
+            //Count for ON-HOLDS
+
+            $query21 = "SELECT qregsRID from que_regs 
+                WHERE purpose LIKE '%$purposeONLY%'
+                AND questatus = 2
+                ORDER BY qregsRID
+                LIMIT 3
+                ;";
+
+            $stmt21 = $this->ipadrbg->prepare($query21);
+            $stmt21->execute();
+            $result21 = $stmt21->get_result();
+
+            $hold = 1;
+
+            while ($row21 = $result21->fetch_assoc()) {
+                $rows21[] = $row21;
+
+                $qregsRID21 = $row21['qregsRID'];
+
+                $HOLDX = 'hold' . $hold;
+
+                $queryHOLDS = "UPDATE que_regsTally SET 
+                    $HOLDX = '$qregsRID21'
+                    WHERE purpose LIKE '%$purposeONLY%'
+                    ";
+                $stmtHOLD= $this->ipadrbg->prepare($queryHOLDS);
+                $stmtHOLD->execute();
+
+                $hold += 1;
+            }
+
+            ///////////////////////////////////////////
+            ///////////////////////////////////////////
+            ///////////////////////////////////////////
+            ///////////////////////////////////////////
+            ///////////////////////////////////////////
+
             $members = rtrim(trim($members), ",");
 
             $query3 = "UPDATE que_regsTally SET 
                 Members = '$members'
-                WHERE purpose = '$purpose'
+                WHERE  purpose LIKE '%$purposeONLY%'
             ";
-
             $stmt3= $this->ipadrbg->prepare($query3);
             $stmt3->execute();
             $result3 = $stmt3->get_result();
+
+
+
+            /////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////
+            /// LOOP FOR NOW SERVINGS
+
+            $query4 = "SELECT qregsRID 
+                FROM que_regs 
+                WHERE purpose LIKE '%$purposeONLY%'
+                AND questatus = 1
+                ORDER BY qregsRID
+                LIMIT 1
+                ;";
+            $stmt4 = $this->ipadrbg->prepare($query4);
+            $stmt4->execute();
+            $result4 = $stmt4->get_result();
+            while ($row4 = $result4->fetch_assoc()) {
+                $qregsRID4 = $row4['qregsRID'];
+
+                $queryNS = "UPDATE que_regsTally SET 
+                    NowServing = '$qregsRID4'
+                    WHERE purpose LIKE '%$purposeONLY%'
+                    ";
+                $stmtNS= $this->ipadrbg->prepare($queryNS);
+                $stmtNS->execute();
+            }
+            /// LOOP FOR NOW SERVINGS - end
         }
+
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+        // FETCH DATA FOR DASHBOARD Display
 
         $query = "SELECT que_regsTally.purpose
             , que_regsTally.Members
+            , que_regsTally.NowServing
             , que_regsTally.m1
             , que_regsTally.m2
             , que_regsTally.m3
+            , que_regsTally.hold1
+            , que_regsTally.hold2
+            , que_regsTally.hold3
             FROM que_regsTally
             ORDER BY que_regsTally.purpose ASC
             ;";
-
         $stmt = $this->ipadrbg->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -1420,6 +1509,33 @@ fclose($wfp);
 
 
 
+    private function apiquePutOnHold(){
+        if($this->get_request_method() != "POST"){
+            $this->response('',406);
+        }
+
+        $queToHold = json_decode(file_get_contents("php://input"),true);
+
+        $qregsRID  = (int)$queToHold['qregsRID'];
+
+        $query = "UPDATE que_regs SET 
+                questatus = 2 
+                WHERE qregsRID = '$qregsRID'
+                ";
+
+$wfp = fopen("zzz.ToHold.txt", "w");
+fwrite($wfp, $query);
+fclose($wfp);
+
+        $stmt= $this->ipadrbg->prepare($query);
+        $stmt->execute();
+
+        $stmt->close();
+        $this->ipadrbg->close();
+    }
+
+
+
     private function APISaveVitalEncoded(){
         if($this->get_request_method() != "POST"){
             $this->response('',406);
@@ -1592,6 +1708,84 @@ fclose($wfp);
     }
 
 
+    private function apiqueActionNowServeDone(){
+        if($this->get_request_method() != "GET"){
+            $this->response('',406);
+        }
+
+        $rid = (int)$this->_request['rid'];
+        $stts = (int)$this->_request['stts'];
+        $purpose = (string)$this->_request['purpose'];
+
+        // update to NOW SERVING next in QUE (1)
+        $queryNEXT = "SELECT
+                qregsRID
+                , purpose
+                , questatus
+            FROM que_regs
+            WHERE purpose LIKE '%$purpose%'
+            AND questatus = 0
+                ORDER BY qregsRID ASC
+                LIMIT 1
+            ;";
+
+
+$wfp = fopen("zzz.nexts.txt", "w");
+fwrite($wfp, $queryNEXT);
+fclose($wfp);
+
+
+        $stmt2 = $this->ipadrbg->prepare($queryNEXT);
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        if ($result2->num_rows > 0) {
+            while ($row2 = $result2->fetch_assoc()) {
+                $qregsRIDNext = $row2['qregsRID'];
+
+                // now serving
+                $queryf = "UPDATE que_regs SET 
+                    questatus = '1' 
+                    WHERE qregsRID = '$qregsRIDNext'
+                    ";
+                $stmtNOWSV = $this->ipadrbg->prepare($queryf);
+                $stmtNOWSV->execute();
+            }
+        }
+        else
+        {
+            // NOTHING TO DO
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////
+
+        // DONE the Now Serving
+        $query = "UPDATE que_regs
+                SET questatus = 9
+                WHERE qregsRID = '$rid' 
+                ;";
+
+$wfp = fopen("zzz.DONENA.txt", "w");
+fwrite($wfp, $query);
+fclose($wfp);
+
+
+
+
+        $stmt = $this->ipadrbg->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $rows[] = $row;
+            }
+            $this->response($this->json($rows), 200);
+        } else {
+            $this->response('', 204);
+        }
+        $stmt->close();
+        $this->ipadrbg->close();
+    }
 
 
     private function get_status()
