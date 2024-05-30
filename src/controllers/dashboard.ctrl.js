@@ -205,6 +205,24 @@ app.controller(
       }
     }
 
+    $scope.putNowServing = function(nowservingRID, nakaHoldRID){
+      console.log(nakaHoldRID);
+      if (confirm("Put #" + nakaHoldRID + " Serve Now?")) {
+        $rest
+        .post('apiputNowServing', {"nowservingRID": nowservingRID, "nakaHoldRID": nakaHoldRID})
+          .then(function success(response) {
+
+          // $window.location.href = 'pages/queShow.php&newRID';
+
+          // $scope.queGetNumber(queobj);
+
+           // alert("QUEUE Data Saved! ");
+           $state.reload();
+        });
+      }
+    }
+
+
     // floor
   }
 );

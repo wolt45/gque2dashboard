@@ -46,7 +46,7 @@
 
     <!-- page content -->
     <div class="row my-3 px-3">
-        <div class="col-md-2 col-sm-4 col-xs-6 col-lg-3 text-center bg-success" style="border: 1px solid white;" ng-repeat="quePurposeMembersOBJItem in quePurposeMembersOBJ">
+        <div class="col-md-2 col-sm-4 col-xs-6 col-lg-3 text-center bg-success" style="border: 2px solid yellow;" ng-repeat="quePurposeMembersOBJItem in quePurposeMembersOBJ">
             <!-- <i class="fas fa-user-md me-3"></i> -->
             <span class="text-light" style="font-size:16px; font-weight: bold;"> {{quePurposeMembersOBJItem.purpose}} </span>
 
@@ -103,7 +103,7 @@
                         <br>
                         <span style="color: red; font-size:16px; font-weight: bold;"> 
 
-                            <button type="button" class="btn btn-sm btn-block btn-danger" style="font-size:16px;" ng-click="putNowServing(quePurposeMembersOBJItem.qregRID)">
+                            <button type="button" class="btn btn-sm btn-block btn-danger" style="font-size:16px;" ng-click="putNowServing(quePurposeMembersOBJItem.NowServing, quePurposeMembersOBJItem.hold1)">
                                 {{quePurposeMembersOBJItem.hold1}}
                             </button>
                             <br>

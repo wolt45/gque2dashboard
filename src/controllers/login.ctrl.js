@@ -14,23 +14,23 @@ app.controller("login", function ($scope, $state, $filter, $rest) {
         username: users.username,
         password: users.password,
       };
+      
       $rest.post("login_user", userObj).then(
         function success(res) {
-          if (res.data.userTypeRID == 1) {
+          // if (res.data.userTypeRID == 1) {
+
             $scope.msg = "";
 
-
             $state.go("dashboard");
-
             
             var encryptedUser = CryptoJS.AES.encrypt(
               JSON.stringify(res.data),
               "Passphrase"
             );
             localStorage.setItem("queue_user", encryptedUser);
-          } else {
-            $scope.msg = "Invalid to login on this system";
-          }
+          // } else {
+          //   $scope.msg = "Invalid to login on this system";
+          // }
         },
         function error(err) {
           $scope.msg = err.data.msg;

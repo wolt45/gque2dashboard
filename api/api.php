@@ -1509,6 +1509,7 @@ fclose($wfp);
 
 
 
+
     private function apiquePutOnHold(){
         if($this->get_request_method() != "POST"){
             $this->response('',406);
@@ -1534,6 +1535,46 @@ fclose($wfp);
         $this->ipadrbg->close();
     }
 
+
+    private function apiputNowServing(){
+        if($this->get_request_method() != "POST"){
+            $this->response('',406);
+        }
+
+        $queToSERVEHold = json_decode(file_get_contents("php://input"),true);
+
+        $nowservingRID  = (int)$queToSERVEHold['nowservingRID'];
+        $nakaHoldRID  = (int)$queToSERVEHold['nakaHoldRID'];
+
+        $query = "UPDATE que_regs SET 
+                questatus = 1 
+                WHERE qregsRID = '$nakaHoldRID'
+                ";
+
+$wfp = fopen("zzz.ToNowSERVE.txt", "w");
+fwrite($wfp, $query);
+fclose($wfp);
+
+        $stmt= $this->ipadrbg->prepare($query);
+        $stmt->execute();
+
+
+        $query2 = "UPDATE que_regs SET 
+                questatus = 0 
+                WHERE qregsRID = '$nowservingRID'
+                ";
+
+$wfp = fopen("zzz.ToSERVE.txt", "w");
+fwrite($wfp, $query2);
+fclose($wfp);
+
+        $stmt2= $this->ipadrbg->prepare($query2);
+        $stmt2->execute();
+
+        $stmt->close();
+        $stmt2->close();
+        $this->ipadrbg->close();
+    }
 
 
     private function APISaveVitalEncoded(){
