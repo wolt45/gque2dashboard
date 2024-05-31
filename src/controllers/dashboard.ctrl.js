@@ -223,6 +223,25 @@ app.controller(
     }
 
 
+
+    $scope.SHOWqueSettingsModal = function(pxDataObj){
+
+      // $scope.getAppointmentVitalsList(pxDataObj.ClinixRID);
+      // $scope.getNursesAssigned(pxDataObj.ClinixRID);
+
+      $scope.showSetAppointmentModalDialog(true);
+      // $scope.pxDataObj = pxDataObj;
+    };
+
+    $scope.closeSetAppointmentModal = function(){
+      $scope.showSetAppointmentModalDialog(false);
+    };
+
+    $scope.showSetAppointmentModalDialog = function(flag) {
+      jQuery("#AppointmentSetModal .modal").modal(flag ? 'show' : 'hide');
+    };
+
+
     // floor
   }
 );

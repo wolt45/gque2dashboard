@@ -30,17 +30,21 @@
 
     <div class="col-lg-12 text-center">
         <a type="button" class="btn btn-success btn-block" ng-click="goRefresh()">
-        <h4 class="fw-bold text-uppercase mb-0" style="color: white;">DR. RAMON B. GUSTILO HOSPITAL</h4>
+            <h4 class="fw-bold text-uppercase mb-0" style="color: white;">DR. RAMON B. GUSTILO HOSPITAL</h4>
         </a>
-        <!-- <small></small> -->
+
+        <!-- <a class="btn btn-block btn-primary btn-sm" ng-click="SHOWqueSettingsModal(x)">
+
+            QUEUE Settings
+
+        </a> -->
+
+
+
+
     </div>
-    <!--  <div class="col-lg-6">
-        <div class="d-flex aling-items-center justify-content-end" style="gap:5px"> -->
-            <!--             <button type="button" class="btn btn-theme-green" ng-click="patch(0)">
-                RUN
-            </button> -->
-        <!-- </div>
-    </div> -->
+
+
 </div>
 
 
@@ -116,3 +120,7 @@
         </div>
     </div>
     <!-- /page content -->
+
+    <?php
+    include "modal.setAppointment.php";
+    ?>
