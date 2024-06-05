@@ -242,6 +242,27 @@ app.controller(
     };
 
 
+    $scope.logout_user = function () {
+      SweetAlert2.fire({
+        title: "Continue to logout?",
+        text: "Your about to logout from the system!",
+        icon: "question",
+        allowOutsideClick: false,
+        showCancelButton: true,
+        confirmButtonColor: "#02AA53",
+        cancelButtonColor: "#E4E4E4",
+        cancelButtonClass: "text-dark",
+        confirmButtonText: "Continue",
+        position: "top",
+      }).then((result) => {
+        if (result.value) {
+          localStorage.clear();
+          // location.reload(true);
+          $state.go("login");
+        }
+      });
+    };
+    
     // floor
   }
 );

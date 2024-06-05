@@ -28,10 +28,18 @@
         </a> -->
     </div>
 
-    <div class="col-lg-12 text-center">
-        <a type="button" class="btn btn-success btn-block" ng-click="goRefresh()">
-            <h4 class="fw-bold text-uppercase mb-0" style="color: white;">DR. RAMON B. GUSTILO HOSPITAL</h4>
-        </a>
+    <div class="col-lg-12 text-end">
+        <!-- <a type="button" class="btn btn-success" ng-click="goRefresh()">
+            <span class="fw-bold text-uppercase mb-0" style="font-size: 26px; color: white;">DR. RAMON B. GUSTILO HOSPITAL</span>
+        </a> -->
+
+        <!-- <span class="fw-bold text-uppercase mb-0" style="font-size: 26px; color: white;">DR. RAMON B. GUSTILO HOSPITAL</span> -->
+        
+<!-- 
+                    <button class="dropdown-item" type="button" ng-click="logout_user()">
+                        <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>
+                        Logout
+                    </button> -->
 
         <!-- <a class="btn btn-block btn-primary btn-sm" ng-click="SHOWqueSettingsModal(x)">
 
@@ -39,6 +47,33 @@
 
         </a> -->
 
+        <!-- <div class="d-flex align-items-center justify-content-end">
+            <div class="profile dropdown-toggle"> -->
+                <!-- <button class="btn btn-light" data-bs-toggle="dropdown" aria-expanded="false"> -->
+                 <!--    <img src="../../../../dump_px/{{info.foto}}" alt="profile" onerror="this.onerror=null;this.src='favicon.png'"> -->
+                    <!-- <span class="ms-2">{{info.shortname}} </span> -->
+                    <!-- <i class="fa-solid fa-angle-down"></i> -->
+                <!-- </button> -->
+
+                <!-- <div class="dropdown-menu dropdown-menu-right"> -->
+                    <!-- <div class="user-box">
+                        <img src="../../../../dump_px/{{info.foto}}" alt="profile" onerror="this.onerror=null;this.src='favicon.png'">
+                        <div class="ms-2">
+                            <div class="fw-bold mb-0">{{info.fullname}}</div>
+                            <small>{{info.ut_n}}</small>
+                        </div>
+                    </div> -->
+                    <!-- <div class="dropdown-divider"></div> -->
+                    <!-- <button class="dropdown-item" type="button" ng-click="logout_user()">
+                        <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>
+                        Logout
+                    </button> -->
+                <!-- </div> -->
+            <!-- </div> -->
+
+
+            
+        <!-- </div> -->
 
 
 
@@ -116,7 +151,13 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="col-lg-12 text-center">
+            <button class="btn btn-warning" type="button" ng-click="logout_user()">
+                <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>
+                Logout
+            </button>
         </div>
     </div>
     <!-- /page content -->

@@ -77,7 +77,11 @@
                         <datalist id="purposeList">
                             <option value="For Registration">
                             <option value="Cashier">
-                            <option value="Check Up ">
+                            <option value="Check Up">
+                            <option value="CT-SCAN">
+                            <option value="MRI">
+                            <option value="X-RAY">
+                            <option value="ULTRASOUND">
                         </datalist>
 
                         <br><br>
