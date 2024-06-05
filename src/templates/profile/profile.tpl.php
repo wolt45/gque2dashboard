@@ -86,6 +86,7 @@
                             <option value="For Registration">
                             <option value="Cashier">
                             <option value="Check Up">
+                            <option value="LABORATORY">
                             <option value="CT-SCAN">
                             <option value="MRI">
                             <option value="X-RAY">
