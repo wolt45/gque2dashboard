@@ -174,7 +174,6 @@ $(function(){
             </div>
         </div>
 
-        <div class="dropdown-divider"></div>
 
         <div class="col-lg-12 text-center">
             <button class="btn btn-warning" type="button" ng-click="logout_user()">
