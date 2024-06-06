@@ -14,7 +14,7 @@
     }
 </style>
 
-<meta http-equiv="refresh" content="7">
+<meta http-equiv="refresh" content="10">
 
 
 <?php
