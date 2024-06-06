@@ -1,3 +1,7 @@
+<meta http-equiv="refresh" content="720">
+
+
+
         <div id="AppointmentSetModal">
             <div id="AppointmentSetModal" class="modal fade" role="dialog">
               <div class="modal-dialog modal-lg" style="width: 100%">
@@ -180,3 +184,4 @@
               </div>
             </div>
         </div>
+

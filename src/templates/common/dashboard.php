@@ -16,6 +16,36 @@
 
 <meta http-equiv="refresh" content="7">
 
+
+<?php
+// $page = $_SERVER['PHP_SELF'];
+// $sec = "5";
+?>
+<!--
+<html>
+    <head>
+    <meta http-equiv="refresh" content="<?php //echo $sec?>;URL='<?php //echo $page?>'">
+    </head>
+    <body>
+    <?php
+        // echo "Watch the page reload itself in 5 second!";
+    ?>
+    </body>
+</html> -->
+
+
+<!-- <script>
+
+$(function(){
+  $("a").click(function(e){
+    e.preventDefault();
+    $("#refresh").remove();
+    alert("Refresh Disabled! ");
+  });
+});
+</script> -->
+
+
 <div class="row align-items-center mb-3 px-3">
 
     <div class="col-md-2 text-start">
@@ -34,7 +64,6 @@
         </a> -->
 
         <!-- <span class="fw-bold text-uppercase mb-0" style="font-size: 26px; color: white;">DR. RAMON B. GUSTILO HOSPITAL</span> -->
-        
 <!-- 
                     <button class="dropdown-item" type="button" ng-click="logout_user()">
                         <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>
@@ -70,16 +99,8 @@
                     </button> -->
                 <!-- </div> -->
             <!-- </div> -->
-
-
-            
         <!-- </div> -->
-
-
-
     </div>
-
-
 </div>
 
 
@@ -158,6 +179,14 @@
                 <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>
                 Logout
             </button>
+
+            <button class="btn btn-success" type="button" ng-click="SHOWqueSettingsModal(x)">
+                <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>
+                Display Settings
+            </button>
+
+<a class="btn btn-danger" href="#">Stop refresh</a>
+
         </div>
     </div>
     <!-- /page content -->

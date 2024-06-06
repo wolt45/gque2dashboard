@@ -10,7 +10,7 @@ app.controller(
     $decrypt,
     $timeout
   ) {
-    document.title = "GMMR | GQUE2";
+    document.title = "GMMR | DASHBOARD";
     $scope.supplier = 0;
     $scope.items_per_page = 50;
     $scope.current_page = 1;
