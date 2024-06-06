@@ -788,9 +788,15 @@ fclose($wfp);
 
         $query1 = "SELECT DISTINCT purpose
                 FROM que_regs
-                WHERE (questatus >= 0 AND questatus <=2)
+                WHERE (questatus >= 0 AND questatus <=2) AND (
+                purpose IS NOT NULL OR purpose <> '')
                 ORDER BY purpose ASC
             ;";
+
+$wfp = fopen("zzz.TALLY.txt", "w");
+fwrite($wfp, $query1);
+fclose($wfp);
+
         $stmt1 = $this->ipadrbg->prepare($query1);
         $stmt1->execute();
         $result1 = $stmt1->get_result();
@@ -852,7 +858,8 @@ fclose($wfp);
             //////////////////////////////////////////
             //Count for ON-HOLDS
 
-            $query21 = "SELECT qregsRID from que_regs 
+            $query21 = "SELECT qregsRID 
+                FROM que_regs 
                 WHERE purpose LIKE '%$purposeONLY%'
                 AND questatus = 2
                 ORDER BY qregsRID
@@ -946,8 +953,17 @@ fclose($wfp);
             , que_regsTally.hold2
             , que_regsTally.hold3
             FROM que_regsTally
+            WHERE (purpose IS NOT NULL OR purpose <> '')
             ORDER BY que_regsTally.purpose ASC
             ;";
+
+
+$wfp = fopen("zzz.BLANKS.txt", "w");
+fwrite($wfp, $query);
+fclose($wfp);
+
+
+
         $stmt = $this->ipadrbg->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();

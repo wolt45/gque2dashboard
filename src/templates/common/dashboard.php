@@ -174,18 +174,20 @@ $(function(){
             </div>
         </div>
 
+        <div class="dropdown-divider"></div>
+
         <div class="col-lg-12 text-center">
             <button class="btn btn-warning" type="button" ng-click="logout_user()">
                 <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>
                 Logout
             </button>
 
-            <button class="btn btn-success" type="button" ng-click="SHOWqueSettingsModal(x)">
+            <!-- <button class="btn btn-success" type="button" ng-click="SHOWqueSettingsModal(x)">
                 <i class="fa-solid fa-arrow-right-from-bracket me-3"></i>
                 Display Settings
-            </button>
+            </button> -->
 
-<a class="btn btn-danger" href="#">Stop refresh</a>
+            <!-- <a class="btn btn-danger" href="#">Stop refresh</a> -->
 
         </div>
     </div>
